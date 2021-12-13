@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { getAllGames } from '../fake-api';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'bg-hoard-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'Board Game Hoard';
