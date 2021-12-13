@@ -48,6 +48,7 @@
     "@nrwl/nest": "^13.3.1",
     "@nrwl/node": "13.3.1",
     "@nrwl/nx-workshop": "0.1.28",
+    "@nrwl/storybook": "^13.3.1",
     "@nrwl/tao": "13.3.1",
     "@nrwl/workspace": "13.3.1",
     "@types/jest": "27.0.2",
