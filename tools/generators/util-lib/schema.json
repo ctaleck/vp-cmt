@@ -20,16 +20,20 @@
         "type": "list",
         "items": [
           {
-            "value": "store",
-            "label": "Store library"
+            "value": "api",
+            "label": "api"
           },
           {
-            "value": "api",
-            "label": "API library"
+            "value": "store",
+            "label": "store"
+          },
+          {
+            "value": "store-e2e",
+            "label": "store-e2e"
           },
           {
             "value": "shared",
-            "label": "Shared library"
+            "label": "shared"
           }
         ]
       }
