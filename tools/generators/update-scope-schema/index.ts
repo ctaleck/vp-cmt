@@ -1,5 +1,16 @@
-import { Tree, updateJson, formatFiles, getProjects, ProjectConfiguration } from '@nrwl/devkit';
-import { from } from 'rxjs';
+import { Tree, updateJson, formatFiles, getProjects, ProjectConfiguration, updateProjectConfiguration } from '@nrwl/devkit';
+
+function addScopeIfMissing(host: Tree) {
+  const projectMap = getProjects(host);
+  Array.from(projectMap.keys()).forEach((projectName) => {
+    const project = projectMap[projectName];
+    if (!project.tags.some((tag) => tag.startsWith('scope:'))) {
+      const scope = projectName.split('-')[0];
+      project.tags.push(`scope:${scope}`);
+      updateProjectConfiguration(host, projectName, project);
+    }
+  });
+}
 
 function getScopes(projectMap: Map<string, ProjectConfiguration>) {
   const projects: any[] = Array.from(projectMap).map((p) => p[1]);
@@ -26,6 +37,8 @@ function replaceScopes(content: string, scopes: string[]): string {
 }
 
 export default async function (host: Tree) {
+  addScopeIfMissing(host);
+  // schema.json changes
   const scopes = getScopes(getProjects(host));
   console.log(`scopes found: ${scopes.concat()}`);
   updateJson(host, 'tools/generators/util-lib/schema.json', (schemaJson) => {
@@ -35,6 +48,7 @@ export default async function (host: Tree) {
     }));
     return schemaJson;
   });
+  // index.ts changes
   const content = host.read('tools/generators/util-lib/index.ts', 'utf-8');
   console.log(`util-lib content ${content}`)
   const newContent = replaceScopes(content, scopes);
