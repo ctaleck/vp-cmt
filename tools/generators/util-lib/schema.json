@@ -28,10 +28,6 @@
             "label": "store"
           },
           {
-            "value": "store-e2e",
-            "label": "store-e2e"
-          },
-          {
             "value": "shared",
             "label": "shared"
           }

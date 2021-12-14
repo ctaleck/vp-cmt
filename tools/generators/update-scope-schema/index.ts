@@ -2,8 +2,7 @@ import { Tree, updateJson, formatFiles, getProjects, ProjectConfiguration, updat
 
 function addScopeIfMissing(host: Tree) {
   const projectMap = getProjects(host);
-  Array.from(projectMap.keys()).forEach((projectName) => {
-    const project = projectMap[projectName];
+  Array.from(projectMap).forEach(([projectName, project]) => {
     if (!project.tags.some((tag) => tag.startsWith('scope:'))) {
       const scope = projectName.split('-')[0];
       project.tags.push(`scope:${scope}`);
