@@ -1,6 +1,8 @@
 {
   "version": 2,
   "projects": {
+    "admin-ui": "apps/admin-ui",
+    "admin-ui-e2e": "apps/admin-ui-e2e",
     "api": "apps/api",
     "api-util-notifications": "libs/api/util-notifications",
     "store": "apps/store",
