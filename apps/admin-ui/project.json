@@ -63,6 +63,13 @@
         "jestConfig": "apps/admin-ui/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "yarn surge dist/apps/admin-ui ${SURGE_DOMAIN_ADMIN} --token ${SURGE_TOKEN}"
+      }
     }
   },
   "tags": []
